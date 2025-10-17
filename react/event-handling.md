@@ -1,5 +1,108 @@
 # Event Handling in React
 
+## What Are Events?
+
+Events are actions or occurrences that happen in the browser - things like clicks, key presses, mouse movements, form submissions, and more. Events allow your application to respond to user interactions.
+
+**Event listeners** are functions that "listen" for specific events to occur on elements and execute code when those events happen. For example, a click event listener waits for a user to click a button, then runs your code.
+
+In React, you attach event listeners directly to JSX elements using event handler props like `onClick`, `onChange`, and `onSubmit`.
+
+## Basic Event Handling
+
+React handles events similarly to vanilla JavaScript, but with some important differences.
+
+**React:**
+```jsx
+function Button() {
+  const handleClick = () => {
+    console.log('Button clicked!');
+  };
+
+  return <button onClick={handleClick}>Click me</button>;
+}
+```
+
+**Vanilla JavaScript:**
+```html
+<button onclick="handleClick()">Click me</button>
+```
+```javascript
+document.querySelector('button').addEventListener('click', handleClick);
+```
+
+## Key Differences from Vanilla JavaScript
+
+### 1. Event Names Are camelCase
+
+**React:** `onClick`, `onChange`, `onSubmit`, `onMouseEnter`
+**JavaScript:** `onclick`, `onchange`, `onsubmit`, `onmouseenter`
+
+```jsx
+// React
+<button onClick={handleClick}>Click</button>
+<input onChange={handleChange} />
+
+// Vanilla JS
+<button onclick="handleClick()">Click</button>
+```
+
+### 2. Pass Functions, Not Strings
+
+**React:** Pass a function reference
+```jsx
+<button onClick={handleClick}>Click</button>
+```
+
+**JavaScript HTML:** Pass a string (inline)
+```html
+<button onclick="handleClick()">Click</button>
+```
+
+### 3. Synthetic Events
+
+React wraps native browser events in a `SyntheticEvent` object. This provides cross-browser compatibility and consistent behavior.
+
+```jsx
+function Input() {
+  const handleChange = (event) => {
+    console.log(event.target.value); // SyntheticEvent
+    console.log(event.nativeEvent);  // Access native event if needed
+  };
+
+  return <input onChange={handleChange} />;
+}
+```
+
+You use SyntheticEvents the same way as native events - they have the same properties and methods.
+
+## Common Events
+
+### Mouse Events
+```jsx
+<button onClick={handleClick}>Click</button>
+<div onDoubleClick={handleDoubleClick}>Double Click</div>
+<div onMouseEnter={handleMouseEnter}>Hover</div>
+<div onMouseLeave={handleMouseLeave}>Leave</div>
+```
+
+### Form Events
+```jsx
+<input onChange={handleChange} />
+<form onSubmit={handleSubmit} />
+<input onFocus={handleFocus} />
+<input onBlur={handleBlur} />
+```
+
+### Keyboard Events
+```jsx
+<input onKeyDown={handleKeyDown} />
+<input onKeyUp={handleKeyUp} />
+<input onKeyPress={handleKeyPress} />
+```
+
+# OLD
+
 ## Basic Event Handling
 
 React handles events similarly to vanilla JavaScript, but with some important differences.
