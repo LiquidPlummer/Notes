@@ -133,17 +133,25 @@ We can also create an app that supports TSX by using a different template:
 ```bash
 npm create vite@latest my-app -- --template react-ts
 ```
-### Project Structure
 
+### Project Structure
+After creating the new React app, you should find a project that looks similar to this:
 ```
 my-app/
-├── node_modules/    # Dependencies
-├── public/          # Static files
-├── src/             # Your code goes here
-│   ├── App.jsx      # Main component
-│   └── main.jsx     # Entry point
-├── index.html       # HTML template
-└── package.json     # Project config
+├── .gitignore          # Git ignore rules
+├── eslint.config.js    # ESLint configuration
+├── index.html          # HTML template
+├── package.json        # Project config
+├── package-lock.json   # Locked dependency versions
+├── README.md           # Project documentation
+├── vite.config.js      # Vite configuration
+├── node_modules/       # Dependencies
+├── public/             # Static files
+└── src/                # Your code goes here
+    ├── App.css         # App component styles
+    ├── App.jsx         # Main component
+    ├── index.css       # Global styles
+    └── main.jsx        # Entry point
 ```
 
 Start editing `src/App.jsx` to build your application!
