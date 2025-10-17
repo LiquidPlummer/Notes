@@ -1,2 +1,2 @@
 # Notes
-[React](./react/readme.md)
+[React](/react/readme.md)
