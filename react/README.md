@@ -1,10 +1,11 @@
-# React Notes
-## Intro to React
+# React
+## Notes
+### Intro to React
 - [Introduction to React](intro-react.md)
 - [JSX and TSX](jsx-tsx.md)
 - [React Project Structure](react-project-structure.md)
 
-## Building React Apps
+### Building React Apps
 - [Components](components.md)
 - [Props](props.md)
 - [Lifting and Sharing State](lifting-and-sharing-state.md)
@@ -13,12 +14,12 @@
 - [Change Detection and DOM Updates](change-detection-updates.md)
 - [HTTP Requests and Responses](http-request-response.md)
 
-## Misc
+### Misc
 - [StrictMode](strict-mode.md)
 - [Lifecycle and Hooks](lifecycle-hooks.md)
 - [Functional vs Class Components](classes-vs-functions.md)
 - [Lists and Keys](lists-and-keys.md)
 - [Higher-Order Components](high-order-components.md)
 
-# React Demo Repos
+## React Examples
  - [React Hello World](https://github.com/LiquidPlummer/React-Demo-Hello-World)
