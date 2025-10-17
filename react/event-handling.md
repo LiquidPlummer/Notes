@@ -302,24 +302,6 @@ function handleClick(e) {
 
 Always use `e.currentTarget.dataset` to reliably access your data attributes.
 
-## Which Approach to Use?
-
-**Use inline arrow functions when:**
-- Starting out / learning React
-- Lists are small (< 50 items)
-- Code clarity is more important than performance
-- Passing complex data (objects, multiple values)
-
-**Use data attributes when:**
-- Optimizing performance for large lists
-- Only need to pass simple values (IDs, strings, numbers)
-- Avoiding unnecessary re-renders is important
-
-**Default recommendation:** Start with inline arrow functions. Only switch to data attributes if you measure actual performance problems.
-
-
-
-
 ## Event Object Properties
 
 The event object provides useful information:
