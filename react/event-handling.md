@@ -101,6 +101,223 @@ You use SyntheticEvents the same way as native events - they have the same prope
 <input onKeyPress={handleKeyPress} />
 ```
 
+# Passing Data to Event Handlers
+
+## Overview
+
+Event handlers often need access to specific data about the element that triggered them. For example, when a button is clicked, you might need to know which item ID it represents, or what action to perform.
+
+There are multiple ways to pass data to event handlers in React. Each approach has different trade-offs in terms of readability and performance.
+
+## Approach 1: Inline Arrow Functions
+
+The most common approach - create a new function that passes the data:
+
+```jsx
+function TodoList({ todos }) {
+  const handleDelete = (id) => {
+    console.log(`Deleting todo ${id}`);
+  };
+
+  return (
+    <ul>
+      {todos.map(todo => (
+        <li key={todo.id}>
+          {todo.text}
+          <button onClick={() => handleDelete(todo.id)}>Delete</button>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+**How it works:**
+- The arrow function `() => handleDelete(todo.id)` creates a closure
+- The closure "remembers" the specific `todo.id` value
+- When clicked, it calls `handleDelete` with that ID
+
+**Pros:**
+- Simple and clear
+- Easy to read and understand
+- Works for any data type
+
+**Cons:**
+- Creates a new function on every render
+- Can cause performance issues with very large lists (hundreds of items)
+
+## Approach 2: Data Attributes
+
+Store the data in the HTML element itself using data attributes:
+
+```jsx
+function TodoList({ todos }) {
+  const handleDelete = (e) => {
+    const id = e.currentTarget.dataset.id;
+    console.log(`Deleting todo ${id}`);
+  };
+
+  return (
+    <ul>
+      {todos.map(todo => (
+        <li key={todo.id}>
+          {todo.text}
+          <button data-id={todo.id} onClick={handleDelete}>Delete</button>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+**How it works:**
+- The `data-id` attribute stores the ID on the button element
+- The same `handleDelete` function is used for all buttons
+- The handler reads the ID from `e.currentTarget.dataset.id`
+
+**Pros:**
+- Only one function reference, not recreated each render
+- Better performance for large lists
+- Uses standard HTML feature
+
+**Cons:**
+- Less intuitive than inline functions
+- Only works with string data (numbers/objects need conversion)
+- Requires reading from the event object
+
+## How Event Handlers Receive the Event Object
+
+When you attach an event handler like `onClick={handleDelete}`, you might notice the handler function receives an event parameter `(e)` even though you didn't explicitly pass it:
+
+```jsx
+const handleDelete = (e) => {  // Where does 'e' come from?
+  console.log(e.target);
+};
+
+<button onClick={handleDelete}>Delete</button>
+```
+
+This is standard JavaScript behavior. When an event occurs, the browser automatically passes the event object as the first argument to your handler function.
+
+**With inline arrow functions:**
+When you use an inline arrow function, you're calling your function yourself, so you control what gets passed:
+
+```jsx
+// You're calling handleDelete, so you pass what you want
+<button onClick={() => handleDelete(todo.id)}>
+
+// If you need both the ID and event:
+<button onClick={(e) => handleDelete(todo.id, e)}>
+```
+
+## What Are Data Attributes?
+
+Data attributes are custom attributes you can add to HTML elements. They always start with `data-` followed by your custom name.
+
+**HTML:**
+```html
+<button data-id="123" data-color="blue" data-user-name="Alice">Click</button>
+```
+
+**Accessing in JavaScript:**
+```javascript
+const button = document.querySelector('button');
+console.log(button.dataset.id);        // "123"
+console.log(button.dataset.color);     // "blue"
+console.log(button.dataset.userName);  // "Alice"
+```
+
+**Key points:**
+- Any attribute starting with `data-` is a data attribute
+- Browsers ignore them (don't affect rendering)
+- Access them via the `.dataset` property
+- Hyphens in HTML become camelCase in JavaScript: `data-user-name` → `dataset.userName`
+- Values are always strings
+
+## Using Data Attributes in React
+
+```jsx
+function ProductList({ products }) {
+  const handleAddToCart = (e) => {
+    const productId = e.currentTarget.dataset.productId;
+    const price = e.currentTarget.dataset.price;
+    console.log(`Adding product ${productId} at $${price}`);
+  };
+
+  return (
+    <div>
+      {products.map(product => (
+        <button
+          key={product.id}
+          data-product-id={product.id}
+          data-price={product.price}
+          onClick={handleAddToCart}
+        >
+          Add {product.name}
+        </button>
+      ))}
+    </div>
+  );
+}
+```
+
+## Multiple Data Attributes
+
+You can store multiple pieces of data:
+
+```jsx
+<button
+  data-id={user.id}
+  data-name={user.name}
+  data-role={user.role}
+  onClick={handleClick}
+>
+  Select User
+</button>
+
+function handleClick(e) {
+  const { id, name, role } = e.currentTarget.dataset;
+  console.log(id, name, role);
+}
+```
+
+## e.target vs e.currentTarget
+
+When using data attributes, use `e.currentTarget`, not `e.target`:
+
+**e.target:** The element that triggered the event (could be a child)
+**e.currentTarget:** The element the handler is attached to (your button)
+
+```jsx
+<button data-id="123" onClick={handleClick}>
+  <span>Delete</span> {/* If you click the span, it's e.target */}
+</button>
+
+function handleClick(e) {
+  console.log(e.target.dataset.id);        // undefined (span has no data-id)
+  console.log(e.currentTarget.dataset.id); // "123" (button has data-id)
+}
+```
+
+Always use `e.currentTarget.dataset` to reliably access your data attributes.
+
+## Which Approach to Use?
+
+**Use inline arrow functions when:**
+- Starting out / learning React
+- Lists are small (< 50 items)
+- Code clarity is more important than performance
+- Passing complex data (objects, multiple values)
+
+**Use data attributes when:**
+- Optimizing performance for large lists
+- Only need to pass simple values (IDs, strings, numbers)
+- Avoiding unnecessary re-renders is important
+
+**Default recommendation:** Start with inline arrow functions. Only switch to data attributes if you measure actual performance problems.
+
+
+
 # OLD
 
 ## Basic Event Handling
