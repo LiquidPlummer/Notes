@@ -20,7 +20,7 @@
 - [Functional vs Class Components](classes-vs-functions.md)
 - [Lists and Keys](lists-and-keys.md)
 - [Higher-Order Components](high-order-components.md)
-- [Fragments](react/react-fragments.md)
+- [Fragments](react-fragments.md)
 
 ## React Examples
  - [React Hello World](https://github.com/LiquidPlummer/React-Demo-Hello-World)
