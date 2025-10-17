@@ -381,6 +381,54 @@ function NestedButtons() {
 }
 ```
 
+## Preventing Default Behavior
+
+Browsers have built-in default behaviors for certain elements and events. These are actions the browser automatically performs when specific events occur:
+
+- **Forms:** When submitted, the browser reloads the page and sends data to the server
+- **Links (`<a>` tags):** When clicked, the browser navigates to the URL in the `href` attribute
+- **Right-click:** Opens the browser's context menu
+- **Text selection:** Clicking and dragging selects text
+- **Checkboxes:** Clicking toggles the checked state
+
+Sometimes you want to override these default behaviors to implement custom functionality, like handling form submissions with JavaScript instead of a page reload, or creating custom navigation logic.
+
+## Vanilla JavaScript Approach
+
+In vanilla JavaScript, you can prevent default browser behavior by returning `false` from an event handler:
+
+```javascript
+element.onclick = function() {
+  // Do something
+  return false; // Prevents default action
+};
+```
+
+This works for inline event handlers and stops default behaviors like form submissions, link navigation, and other browser actions.
+
+## React Approach
+
+**Returning `false` doesn't work in React.** You must explicitly call `preventDefault()` on the event object.
+
+The `preventDefault()` method stops the browser's default behavior for an event. For example, forms normally reload the page on submit, and links normally navigate to a new URL. Calling `preventDefault()` stops these default actions so you can handle them yourself.
+
+```jsx
+function Form() {
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Must call this explicitly
+    console.log('Form submitted');
+    // Handle form data here
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
 ## Form Input Handling
 
 ### Text Inputs
