@@ -129,6 +129,10 @@ This will:
 
 Open your browser to the URL shown (usually `http://localhost:5173`) to see your app running!
 
+We can also create an app that supports TSX by using a different template:
+```bash
+npm create vite@latest my-app -- --template react-ts
+```
 ### Project Structure
 
 ```
