@@ -185,31 +185,6 @@ function TodoList({ todos }) {
 - Only works with string data (numbers/objects need conversion)
 - Requires reading from the event object
 
-## How Event Handlers Receive the Event Object
-
-When you attach an event handler like `onClick={handleDelete}`, you might notice the handler function receives an event parameter `(e)` even though you didn't explicitly pass it:
-
-```jsx
-const handleDelete = (e) => {  // Where does 'e' come from?
-  console.log(e.target);
-};
-
-<button onClick={handleDelete}>Delete</button>
-```
-
-This is standard JavaScript behavior. When an event occurs, the browser automatically passes the event object as the first argument to your handler function.
-
-**With inline arrow functions:**
-When you use an inline arrow function, you're calling your function yourself, so you control what gets passed:
-
-```jsx
-// You're calling handleDelete, so you pass what you want
-<button onClick={() => handleDelete(todo.id)}>
-
-// If you need both the ID and event:
-<button onClick={(e) => handleDelete(todo.id, e)}>
-```
-
 ## What Are Data Attributes?
 
 Data attributes are custom attributes you can add to HTML elements. They always start with `data-` followed by your custom name.
@@ -281,6 +256,32 @@ function handleClick(e) {
 }
 ```
 
+## How Event Handlers Receive the Event Object
+
+When you attach an event handler like `onClick={handleDelete}`, you might notice the handler function receives an event parameter `(e)` even though you didn't explicitly pass it:
+
+```jsx
+const handleDelete = (e) => {  // Where does 'e' come from?
+  console.log(e.target);
+};
+
+<button onClick={handleDelete}>Delete</button>
+```
+
+This is standard JavaScript behavior. When an event occurs, the browser automatically passes the event object as the first argument to your handler function.
+
+**With inline arrow functions:**
+When you use an inline arrow function, you're calling your function yourself, so you control what gets passed:
+
+```jsx
+// You're calling handleDelete, so you pass what you want
+<button onClick={() => handleDelete(todo.id)}>
+
+// If you need both the ID and event:
+<button onClick={(e) => handleDelete(todo.id, e)}>
+```
+
+
 ## e.target vs e.currentTarget
 
 When using data attributes, use `e.currentTarget`, not `e.target`:
@@ -318,189 +319,6 @@ Always use `e.currentTarget.dataset` to reliably access your data attributes.
 
 
 
-# OLD
-
-## Basic Event Handling
-
-React handles events similarly to vanilla JavaScript, but with some important differences.
-
-**React:**
-```jsx
-function Button() {
-  const handleClick = () => {
-    console.log('Button clicked!');
-  };
-
-  return <button onClick={handleClick}>Click me</button>;
-}
-```
-
-**Vanilla JavaScript:**
-```html
-<button onclick="handleClick()">Click me</button>
-```
-```javascript
-document.querySelector('button').addEventListener('click', handleClick);
-```
-
-## Key Differences from Vanilla JavaScript
-
-### 1. Event Names Are camelCase
-
-**React:** `onClick`, `onChange`, `onSubmit`, `onMouseEnter`
-**JavaScript:** `onclick`, `onchange`, `onsubmit`, `onmouseenter`
-
-```jsx
-// React
-<button onClick={handleClick}>Click</button>
-<input onChange={handleChange} />
-
-// Vanilla JS
-<button onclick="handleClick()">Click</button>
-```
-
-### 2. Pass Functions, Not Strings
-
-**React:** Pass a function reference
-```jsx
-<button onClick={handleClick}>Click</button>
-```
-
-**JavaScript HTML:** Pass a string (inline)
-```html
-<button onclick="handleClick()">Click</button>
-```
-
-### 3. Cannot Return false to Prevent Default
-
-**React:** Must call `preventDefault()` explicitly
-
-The `preventDefault()` method stops the browser's default behavior for an event. For example, forms normally reload the page on submit, and links normally navigate to a new URL. Calling `preventDefault()` stops these default actions so you can handle them yourself.
-
-```jsx
-function Form() {
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Stops page reload
-    console.log('Form submitted');
-  };
-
-  return <form onSubmit={handleSubmit}>...</form>;
-}
-```
-
-**JavaScript:** Can return false to prevent default
-
-In vanilla JavaScript, returning `false` from an inline event handler prevents the default action. This doesn't work in React - you must use `preventDefault()` explicitly.
-
-```javascript
-element.onclick = function() {
-  return false; // Prevents default in vanilla JS
-};
-```
-
-### 4. Synthetic Events
-
-React wraps native browser events in a `SyntheticEvent` object. This provides cross-browser compatibility and consistent behavior.
-
-```jsx
-function Input() {
-  const handleChange = (event) => {
-    console.log(event.target.value); // SyntheticEvent
-    console.log(event.nativeEvent);  // Access native event if needed
-  };
-
-  return <input onChange={handleChange} />;
-}
-```
-
-You use SyntheticEvents the same way as native events - they have the same properties and methods.
-
-## Common Events
-
-### Mouse Events
-```jsx
-<button onClick={handleClick}>Click</button>
-<div onDoubleClick={handleDoubleClick}>Double Click</div>
-<div onMouseEnter={handleMouseEnter}>Hover</div>
-<div onMouseLeave={handleMouseLeave}>Leave</div>
-```
-
-### Form Events
-```jsx
-<input onChange={handleChange} />
-<form onSubmit={handleSubmit} />
-<input onFocus={handleFocus} />
-<input onBlur={handleBlur} />
-```
-
-### Keyboard Events
-```jsx
-<input onKeyDown={handleKeyDown} />
-<input onKeyUp={handleKeyUp} />
-<input onKeyPress={handleKeyPress} />
-```
-
-## Event Handler Patterns
-
-### Inline Arrow Functions
-
-Useful for passing arguments:
-```jsx
-function TodoList({ todos }) {
-  const handleDelete = (id) => {
-    console.log(`Deleting todo ${id}`);
-  };
-
-  return (
-    <ul>
-      {todos.map(todo => (
-        <li key={todo.id}>
-          {todo.text}
-          <button onClick={() => handleDelete(todo.id)}>Delete</button>
-        </li>
-      ))}
-    </ul>
-  );
-}
-```
-
-**Note:** Creates a new function on each render. Usually fine, but can impact performance in large lists.
-
-### Pre-Bound Functions
-
-Define the handler separately:
-```jsx
-function Button() {
-  const handleClick = () => {
-    console.log('Clicked');
-  };
-
-  return <button onClick={handleClick}>Click me</button>;
-}
-```
-
-### Passing Arguments Without Inline Functions
-
-Use data attributes or currying:
-```jsx
-function TodoList({ todos }) {
-  const handleDelete = (e) => {
-    const id = e.currentTarget.dataset.id;
-    console.log(`Deleting todo ${id}`);
-  };
-
-  return (
-    <ul>
-      {todos.map(todo => (
-        <li key={todo.id}>
-          {todo.text}
-          <button data-id={todo.id} onClick={handleDelete}>Delete</button>
-        </li>
-      ))}
-    </ul>
-  );
-}
-```
 
 ## Event Object Properties
 
