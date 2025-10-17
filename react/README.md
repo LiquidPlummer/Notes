@@ -6,7 +6,6 @@
 
 ## Building React Apps
 - [Components](components.md)
-- [Functional vs Class Components](classes-vs-functions.md)
 - [Props](props.md)
 - [Lifting and Sharing State](lifting-and-sharing-state.md)
 - [Event Handling](event-handling.md)
@@ -17,5 +16,6 @@
 ## Misc
 - [StrictMode](strict-mode.md)
 - [Lifecycle and Hooks](lifecycle-hooks.md)
+- [Functional vs Class Components](classes-vs-functions.md)
 - [Lists and Keys](lists-and-keys.md)
 - [Higher-Order Components](high-order-components.md)
