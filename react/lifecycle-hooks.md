@@ -12,27 +12,90 @@ Adds state to your functional components. State is data that can change over tim
 
 Use it for: form inputs, toggles, counters, any data that changes in your component.
 
+**Example:**
+```jsx
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
 ### useEffect
 
 Performs side effects in your components. Side effects are operations that interact with the outside world or need to happen after rendering.
 
 Use it for: fetching data from APIs, setting up subscriptions, manipulating the DOM directly, timers, event listeners.
 
-## Very Common Hooks
+**Example:**
+```jsx
+import { useState, useEffect } from 'react';
 
-Once you're comfortable with the essentials, these hooks become important for building real applications.
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null);
 
-### useRef
+  useEffect(() => {
+    // Fetch user data when component mounts or userId changes
+    fetch(`/api/users/${userId}`)
+      .then(res => res.json())
+      .then(data => setUser(data));
+  }, [userId]); // Dependency array - re-run when userId changes
 
-Creates a mutable reference that persists across re-renders. Unlike state, updating a ref doesn't cause a re-render.
-
-Use it for: accessing DOM elements directly, storing mutable values that don't need to trigger renders, keeping track of previous values.
+  return <div>{user?.name}</div>;
+}
+```
 
 ### useContext
 
 Accesses data from React Context without prop drilling. Context provides a way to share values throughout your component tree without passing props manually at every level.
 
 Use it for: accessing global state like authentication status, theme preferences, language settings, or user data.
+
+**Example:**
+```jsx
+import { createContext, useContext, useState } from 'react';
+
+// Create a context
+const ThemeContext = createContext();
+
+function App() {
+  const [theme, setTheme] = useState('light');
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <Header />
+      <Content />
+    </ThemeContext.Provider>
+  );
+}
+
+function Header() {
+  // Access context value
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  return (
+    <header>
+      <p>Current theme: {theme}</p>
+      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+        Toggle Theme
+      </button>
+    </header>
+  );
+}
+```
+## Other Common Hooks
+### useRef
+
+Creates a mutable reference that persists across re-renders. Unlike state, updating a ref doesn't cause a re-render.
+
+Use it for: accessing DOM elements directly, storing mutable values that don't need to trigger renders, keeping track of previous values.
 
 ### useMemo
 
