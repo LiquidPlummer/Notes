@@ -97,8 +97,8 @@ export default App;
 Use `export default` for the main component in a file, and `import` to use it elsewhere.
 
 ## Component Best Practices
-1. **Keep components small and focused** Each component should do one thing well.
-2. **Use descriptive names** Component names should clearly describe what they render or do.
-3. **Extract reusable logic** If you use the same pattern multiple times, make it a component.
-4. **Organize by feature or type** Group related components together in folders.
-5. **Start simple** Don't over-engineer. Build what you need, refactor when needed.
+1. **Keep components small and focused**: Each component should do one thing well.
+2. **Use descriptive names**: Component names should clearly describe what they render or do.
+3. **Extract reusable logic**: If you use the same pattern multiple times, make it a component.
+4. **Organize by feature or type**: Group related components together in folders.
+5. **Start simple**: Don't over-engineer. Build what you need, refactor when needed.
