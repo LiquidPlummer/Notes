@@ -1,13 +1,20 @@
 # React Notes
-## Contents
-
+## Intro to React
 - [Introduction to React](intro-react.md)
 - [JSX and TSX](jsx-tsx.md)
 - [React Project Structure](react-project-structure.md)
-- [StrictMode](strict-mode.md)
+
+## Building React Apps
 - [Components](components.md)
-- [Props](props.md)
 - [Functional vs Class Components](classes-vs-functions.md)
+- [Props](props.md)
+
+
+
+- [StrictMode](strict-mode.md)
+
+
+
 - [Lifecycle and Hooks](lifecycle-hooks.md)
 - [Event Handling](event-handling.md)
 - [Lifting and Sharing State](lifting-and-sharing-state.md)
