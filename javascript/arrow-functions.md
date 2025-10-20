@@ -1,4 +1,4 @@
-# JavaScript Arrow Functions - Quick Reference
+# JavaScript Arrow Functions
 
 ## What Are Arrow Functions?
 
