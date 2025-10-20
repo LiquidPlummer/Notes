@@ -4,3 +4,4 @@
  - [Manipulating the DOM](dom-manipulation.md)
  - [Arrow Functions](arrow-functions.md)
  - [Immediately Invoked Function Expression - IIFE](iife.md)
+ - [Async Programming in JS](async-programming.md)
