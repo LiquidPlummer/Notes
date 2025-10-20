@@ -1,4 +1,4 @@
-# JavaScript Event Listeners - Quick Reference
+# JavaScript Event Listeners
 
 ## What Are Events?
 
