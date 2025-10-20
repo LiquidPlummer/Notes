@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Events</title>
+</head>
+<body>
+    <div id="div1" onclick="alertFunction($e)"><!--We have added an event listener with html-->
+        <div id="bubbleDiv"><!--We will use javascript to add a listener here-->
+            <div id="captureDiv"><!--We will use javascript to add a listener here-->
+                <button>Button!</button><!--clicking this button will create a 'click' event-->
+            </div>
+        </div>
+    </div>
+</body>
+    <footer>
+        <script src="script.js"></script>
+    </footer>
+</html>
