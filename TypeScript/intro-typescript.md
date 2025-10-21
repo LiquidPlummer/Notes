@@ -80,6 +80,49 @@ tsc
 
 And the compiler will transpile all files according to your configuration.
 
+## Configuring TypeScript with tsconfig.json
+
+For any serious TypeScript project, you'll want to create a `tsconfig.json` file in your project root. This file configures the TypeScript compiler's behavior and specifies which files to include or exclude from compilation.
+
+To generate a default configuration file:
+
+```
+tsc --init
+```
+
+This creates a `tsconfig.json` with many options commented out and some sensible defaults enabled. The configuration file uses JSON format and typically includes:
+
+**Compiler Options**: These control how TypeScript transpiles your code. Common options include:
+- `target`: Which JavaScript version to output (ES5, ES6, ES2020, etc.)
+- `module`: Module system to use (commonjs, es6, etc.)
+- `outDir`: Where to place transpiled JavaScript files
+- `rootDir`: Where your TypeScript source files are located
+- `strict`: Enables all strict type checking options (highly recommended)
+- `esModuleInterop`: Better compatibility with CommonJS modules
+
+**File Inclusion**: You can specify which files to compile:
+- `include`: Array of file patterns to include
+- `exclude`: Array of file patterns to exclude (node_modules is excluded by default)
+- `files`: Explicit list of files to compile
+
+A simple `tsconfig.json` might look like:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
+```
+
+With this configuration, running `tsc` will compile all TypeScript files in the `src` directory and output JavaScript to the `dist` directory.
+
 ## Why Use TypeScript?
 
 The primary benefits of TypeScript are:
