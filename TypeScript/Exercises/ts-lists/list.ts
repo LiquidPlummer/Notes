@@ -42,6 +42,11 @@ interface CustomList<T>{
      */
     clear(): void;
 
+    
+    /**
+     * Returns the number of elements in the list
+     * @returns The size of the list
+     */
     length(): number;
 
 }
