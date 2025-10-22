@@ -23,7 +23,7 @@
 - [Fragments](react-fragments.md)
 
 ## React Demos
- - [React Hello World](react/demos/hello-world/)
+ - [React Hello World](demos/hello-world/)
 
 ## React Exercises
  - [Temperature Converter](https://github.com/LiquidPlummer/Notes/blob/main/react/exercises/temp-converter.md)
