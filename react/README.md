@@ -10,13 +10,13 @@
 - [Components](components.md)
 - [Props](props.md)
 - [Event Handling](event-handling.md)
+- [Lifecycle and Hooks](lifecycle-hooks.md)
 - [Lifting and Sharing State](lifting-and-sharing-state.md)
 - [Routing](routing.md)
 - [HTTP Requests and Responses](http-request-response.md)
 
 ### Misc
 - [StrictMode](strict-mode.md)
-- [Lifecycle and Hooks](lifecycle-hooks.md)
 - [Functional vs Class Components](classes-vs-functions.md)
 - [Lists and Keys](lists-and-keys.md)
 - [Higher-Order Components](high-order-components.md)
