@@ -4,14 +4,14 @@
 - [Introduction to React](intro-react.md)
 - [JSX and TSX](jsx-tsx.md)
 - [React Project Structure](react-project-structure.md)
+- [Change Detection and DOM Updates](change-detection-updates.md)
 
 ### Building React Apps
 - [Components](components.md)
 - [Props](props.md)
-- [Lifting and Sharing State](lifting-and-sharing-state.md)
 - [Event Handling](event-handling.md)
+- [Lifting and Sharing State](lifting-and-sharing-state.md)
 - [Routing](routing.md)
-- [Change Detection and DOM Updates](change-detection-updates.md)
 - [HTTP Requests and Responses](http-request-response.md)
 
 ### Misc
