@@ -24,3 +24,6 @@
 
 ## React Examples
  - [React Hello World](https://github.com/LiquidPlummer/React-Demo-Hello-World)
+
+## React Exercises
+ - [Temperature Converter](https://github.com/LiquidPlummer/Notes/blob/main/react/exercises/temp-converter.md)
