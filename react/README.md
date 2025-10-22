@@ -22,8 +22,8 @@
 - [Higher-Order Components](high-order-components.md)
 - [Fragments](react-fragments.md)
 
-## React Examples
- - [React Hello World](https://github.com/LiquidPlummer/React-Demo-Hello-World)
+## React Demos
+ - [React Hello World](react/demos/hello-world/)
 
 ## React Exercises
  - [Temperature Converter](https://github.com/LiquidPlummer/Notes/blob/main/react/exercises/temp-converter.md)
