@@ -24,6 +24,7 @@
 
 ## React Demos
  - [React Hello World](demos/hello-world/)
+ - [React Components](demos/react-demo-components/)
 
 ## React Exercises
  - [Temperature Converter](https://github.com/LiquidPlummer/Notes/blob/main/react/exercises/temp-converter.md)
