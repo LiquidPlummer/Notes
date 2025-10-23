@@ -9,9 +9,9 @@
 ### Building React Apps
 - [Components](components.md)
 - [Props](props.md)
+- [Lifting and Sharing State](lifting-and-sharing-state.md)
 - [Event Handling](event-handling.md)
 - [Lifecycle and Hooks](lifecycle-hooks.md)
-- [Lifting and Sharing State](lifting-and-sharing-state.md)
 - [Routing](routing.md)
 - [HTTP Requests and Responses](http-request-response.md)
 
@@ -24,6 +24,7 @@
 
 ## React Demos
  - [React Hello World](demos/hello-world/)
+ - [React Components](demos/react-demo-components/)
 
 ## React Exercises
  - [Temperature Converter](https://github.com/LiquidPlummer/Notes/blob/main/react/exercises/temp-converter.md)
