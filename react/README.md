@@ -9,9 +9,9 @@
 ### Building React Apps
 - [Components](components.md)
 - [Props](props.md)
+- [Lifting and Sharing State](lifting-and-sharing-state.md)
 - [Event Handling](event-handling.md)
 - [Lifecycle and Hooks](lifecycle-hooks.md)
-- [Lifting and Sharing State](lifting-and-sharing-state.md)
 - [Routing](routing.md)
 - [HTTP Requests and Responses](http-request-response.md)
 
