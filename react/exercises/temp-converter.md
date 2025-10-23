@@ -4,7 +4,7 @@ A react app that converts temperature values from F <--> C
 ### Here's what to do:
  - build a temperature converter between F and C
    - C = (F-32)*(5/9)
-   - F = C*(5/9)+32
+   - F = C*(9/5)+32
  - Start a new react app with the Vite react template
  - Add two components, the Fahrenheit component and the Celsius component, both children of the root component
  - Both components should have:
