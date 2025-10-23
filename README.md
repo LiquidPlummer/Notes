@@ -4,5 +4,6 @@
  - [TypeScript](TypeScript/README.md)
 
 # QC Prep
- - [How to do Well in QC](QC/how-to-do-well-in-qc.pdf)
- - [QC Study Materials](QC/README.md)
+ - [NEW - QC Question Banks](QC/README.md)
+ - [OLD - How to do Well in QC](QC/old%20materials/how-to-do-well-in-qc.pdf)
+ - [OLD - QC Study Materials](QC/old%20materials/README.md)
