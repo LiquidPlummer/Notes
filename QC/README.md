@@ -4,4 +4,3 @@
  - [JavaScript](./QC-JavaScript.md)
  - [TypeScript](./QC-TypeScript.md)
  - [React](./QC-React.md)
-
