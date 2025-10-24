@@ -1,6 +1,9 @@
-# New QC Question Banks!
-
+# QC Study
+## New QC Question Banks!
  - [HTML/CSS](./QC-HTML-CSS.md)
- - [JavaScript](./QC-JavaScript.md)
- - [TypeScript](./QC-TypeScript.md)
+ - [JavaScript](./qc-javascript.md)
+ - [TypeScript](./qc-typescript.md)
  - [React](./QC-React.md)
+
+# The Older Stuff:
+ - [Old QC materials](./old%20materials/README.md)
