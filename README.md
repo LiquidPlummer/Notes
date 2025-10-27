@@ -4,7 +4,7 @@
  - [TypeScript](TypeScript/README.md)
  - [AWS](cloud/aws/README.md)
  - [GCP](cloud/gcp/README.md)
- - [Microservices](msa/README.md)
+ - [Microservices](MSA/README.md)
 
 # QC Prep
  - [NEW - QC Question Banks](QC/README.md)
