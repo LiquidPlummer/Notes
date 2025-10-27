@@ -2,6 +2,7 @@
  - [React](react/README.md)
  - [JavaScript](javascript/README.md)
  - [TypeScript](TypeScript/README.md)
+ - [AWS](cloud/aws/README.md)
 
 # QC Prep
  - [NEW - QC Question Banks](QC/README.md)
