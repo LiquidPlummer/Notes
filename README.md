@@ -7,7 +7,7 @@
  - [Microservices](MSA/README.md)
 
 # Sample Portfolio
- - [Sample Portfolio #5]()
+ - [Sample Portfolio #5](Sample_Portfolio_5.pdf)
 
 # QC Prep
  - [NEW - QC Question Banks](QC/README.md)
