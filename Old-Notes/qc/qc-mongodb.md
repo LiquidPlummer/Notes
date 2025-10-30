@@ -1,0 +1,86 @@
+# MongoDB QC Study
+ - What is MongoDB?
+   - A No-SQL database, as opposed to the very common relational database AKA SQL database. It is a persistence solution which stores data BSON Documents. It is more felxible and easy to begin using than a SQL database. We store data as flexible documents rather than rigid table scema.
+ - What is MongoDB Atlas?
+   - It is a freemium cloud service provided by MongoDB to run mongodb instances in the cloud.
+ - What is Monsgosh (Mongo Shell)?
+   - This is a command line interface for connecting to and manipulating a mongoDB instance.
+ - What is the Mongodb Java Driver/MongoDB Java API?
+   - The API used to connect to and manipulate a mongodb instance from within a java application.
+ - What makes MongoDB different from a relational database?
+   - Mongo doesn't have a rigidly defined schema, instead stores data as very flexible documents
+   - Mongo doesn't enforce referential integrity
+   - No use of the Structured Query Language
+   - Designed with horizontal scaling in mind, designed with scale-out workloads in mind
+ - What are documents?
+   - this is the basic unit of storage in Mongo, an analogue to a row or record in a SQL table, formatted as BSON data
+ - What are collections?
+   - Collections are made up of documents, analogue to a SQL table, but not rigidly defined.
+ - What are indexes, and how do they work?
+   - These decrease search times by reducing the total number of records to search. An index is made of a B-Tree which contains some portion of the data in the collection. Indexing a field makes searches based on that field much much faster.
+ - How does an index speed up mongo database access?
+   - See above
+ - If indexing a field speeds up querying that collection based on that field, why not add an index on every field in every collection?
+   - indexes take up space, duplicate data, and incur a cost when inserting, updating, or deleting
+ - What would be a use case for making an index hidden?
+   - If we wanted to see the effect of dropping an index with the option to bring it back. Hidden indexes still balance themselves, but no longer get used to speed up queries.
+ - What is the primary key of a mongodb collection?
+   - _id, this is automatically generated and required, and implies uniqueness
+ - What data types are valid for the primary key field?
+   - Object, String, Integer, All valid BSON types except arrays.
+ - What are embedded documents AKA embedded data?
+   - documents nested within another document, BSON objects within BSON objects
+   - the nested documents do NOT necessarily have an _id field, and certainly don't require a primary key
+ - When would we want to use embedded data?
+   - often for 1-to-1 and 1-to-many relations
+   - when the data is often consumed as a whole
+   - When we are not concerned with duplication
+ - What are document references?
+   - Analogue of SQL foreign keys, but with no referential integrity.
+   - references the value of a field in another collection
+ - When would we want to use document references?
+   - For many-to-many and 1-to-many relations
+   - if we frequently modify that data references avoid modifying duplicated data, or dailing to do so
+   - if the data is often consumed in part
+   - if we are concerned with duplication
+ - Does mongodb enforce referential integrity?
+   - no
+ - How can you model a one-to-many relation in mongodb?
+   - embedded data: the embedded thing is an array of objects
+   - document references: with an array of references
+ - How can you model a many-to-many relationship in mongodb?
+   - With a bi-directional set of 1-to-many relations where either side has an array of references to the other collection
+ - How do we use our mongo database in a java application?
+   - We access it with the mongodb driver API
+ - What are these interfaces for:
+   - MongoClient - Represents a mongodb instance or cluster, Object which establishes connection to mongodb instance
+   - MongoDatabase - Object which represents a database, allows us to access the collections
+   - MongoCollection<> - Object represents a collection within the database, allows us to access documents
+   - Document - Object represents one document in a collection and allows us to read it's data
+   - Bson - this class helps up generate, parse, and interpret BSON in order to work with documents
+ - How do we insert a document into a collection with mongosh?
+   - db.collection.insertOne({field: value, field2: value2})
+ - How do we insert a document into a collection with Mongo Java Driver?
+   - collection.insertOne(document) we insert the document which represents the data
+ - How do we insert many documents at once?
+   - with the insertMany method which takes in an array of documents
+ - How do we delete documents?
+   - with the deleteOne or deleteMany method, these take in a filter which represents the documents to delete
+ - How do we update documents?
+   - with the updateOne or updateMany method, which takes in a filter describing the document(s) to be updated, and the updated data
+ - What is the difference between replacing and updating a document?
+   - replace involves removing the original from the collection and adding an entirely new entry
+   - updating just changes values in an existing document
+ - Does MongoDB support transactions?
+   - yes, but they are not always necessary, and not even possible unless the database is configured to support them.
+ - Why is it not necessary to perform single document updates as part of a transaction?
+   - because updates of this nature are atomic just by the design of mongo
+ - Why are mongodb indexes defined with an integer value (1, or -1)?
+   - This indicates if the index should sort ascending (1) or descending (-1)
+ - What is an aggregation pipeline?
+   - carry out a set of operations on a group of data in order to transform (or aggregate) the result
+ - Are there any non-pipeline aggregations?
+   - count()
+   - estimatedCount()
+   - documentCount()
+   - distinct()
