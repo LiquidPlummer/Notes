@@ -33,6 +33,29 @@ Pub/Sub decouples services through asynchronous messaging. Publishers emit event
 
 **Implementations:** Apache Kafka, RabbitMQ, AWS SNS/SQS, Google Pub/Sub, Redis Pub/Sub.
 
+## Producer/Consumer Pattern
+
+### The Problem
+When production and consumption of data happen at different rates or by different components, direct coupling creates bottlenecks and inefficiency. Producers must wait for consumers or vice versa, limiting throughput and flexibility.
+
+### The Solution
+Separate producers from consumers using a shared buffer (queue). Producers create data and add it to the queue without knowing who will consume it. Consumers take data from the queue and process it independently. The buffer decouples the two, allowing them to operate at different speeds.
+
+**Example:** A web server receives user uploads (producer) and adds them to a processing queue. Background workers (consumers) pull items from the queue and process them. If uploads spike, the queue grows but the server stays responsive. If processing is fast, the queue drains quickly.
+
+**Key Components:**
+- **Producer**: Creates and adds items to the buffer
+- **Consumer**: Removes and processes items from the buffer
+- **Shared Buffer**: Queue that holds items, typically with a size limit
+- **Synchronization**: Ensures thread-safe access to prevent race conditions
+
+**Benefits:** Decouples production from consumption, handles rate mismatches, enables parallel processing, improves system responsiveness.
+
+**Drawbacks:** Requires buffer management, potential memory overhead, adds complexity with synchronization.
+
+**Implementations:** Java BlockingQueue, Python queue.Queue, message brokers for distributed systems.
+
+
 ## Saga Pattern
 
 ### The Problem
