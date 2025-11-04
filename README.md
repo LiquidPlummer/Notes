@@ -5,6 +5,7 @@
  - [AWS](cloud/aws/README.md)
  - [GCP](cloud/gcp/README.md)
  - [Microservices](MSA/README.md)
+ - [DevOps](DevOps/README.md)
 
 # Sample Portfolio
  - [Sample Portfolio #5](Sample_Portfolio_5.pdf)
