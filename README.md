@@ -1,6 +1,6 @@
 # Important Self-Study For Staging Time
  - [AWS](cloud/aws/README.md)
- - [GCP](cloud/gcp/README.md)
+ - [GCP](cloud/GCP/README.md)
 
 # Notes
  - [React](react/README.md)
